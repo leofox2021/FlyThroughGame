@@ -45,16 +45,19 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\2022.2.5f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Plane.cs" />
-     <Compile Include="Assets\Code\Airplane.cs" />
+     <Compile Include="Assets\Code\Database.cs" />
+     <Compile Include="Assets\Code\PlaneMove.cs" />
      <Folder Include="Assets" />
-     <Folder Include="Assets\PIcs" />
+     <Folder Include="Assets\Pics" />
      <Folder Include="Assets\Code" />
-     <Folder Include="Assets\Tree" />
+     <Folder Include="Assets\3D\Airbus A310\Texture\Materials" />
+     <Folder Include="Assets\3D\Airbus A310" />
+     <Folder Include="Assets\3D\Airbus A310\Texture" />
      <Folder Include="Assets\Materials" />
-     <Folder Include="Assets\Airplane" />
      <Folder Include="Assets\Scenes" />
-     <Folder Include="Assets\PIcs\Materials" />
+     <Folder Include="Assets\3D" />
+     <Folder Include="Assets\3D\Tree" />
+     <Folder Include="Assets\Pics\Materials" />
      <Reference Include="UnityEngine">
      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.2.5f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
      </Reference>
