@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Database;
@@ -11,13 +9,14 @@ public class PlaneMove : MonoBehaviour
     [SerializeField] private float _movementSpeed;
     [SerializeField] private float _rotationStep;
     [SerializeField] private float _peakRotation;
-
+    
     private Vector3 direction;
     private Vector3 rotation;
     
     private bool _moving;
-    private bool _rotating;
-
+    private bool _rotatingHorizontally;
+    private bool _rotatingVertically;
+    
     public void Start() 
     {
         _moving = false;
@@ -45,16 +44,16 @@ public class PlaneMove : MonoBehaviour
         {
             if (currentZ < _peakRotation)
             {
-                _rotating = true;
-                rotation.Set(_rotationStep / 10, currentY, -_rotationStep);
+                _rotatingVertically = true;
+                rotation.Set(currentX, _rotationStep / 4, -_rotationStep);
             }
         }
         else if (Input.GetKey(Keys.leftKey))
         {
             if (currentZ > -_peakRotation)
             {
-                _rotating = true;
-                rotation.Set(_rotationStep / 10, currentY, _rotationStep);
+                _rotatingVertically = true;
+                rotation.Set(currentX, -_rotationStep / 4, _rotationStep);
             }
         }
         
@@ -62,7 +61,7 @@ public class PlaneMove : MonoBehaviour
         {
             if (currentX > -_peakRotation)
             {
-                _rotating = true;
+                _rotatingVertically = true;
                 rotation.Set(_rotationStep, currentY, currentZ);
             }
             
@@ -71,32 +70,28 @@ public class PlaneMove : MonoBehaviour
         {
             if (currentX < _peakRotation)
             {
-                _rotating = true;
+                _rotatingVertically = true;
                 rotation.Set(-_rotationStep, currentY, currentZ);
             }
         }
     }
 
     
-    public void FixedUpdate() 
+    public void FixedUpdate()
     {
+        Vector3 currentPosition = airplane.transform.position;
+        Vector3 forwardDirection = airplane.transform.forward;
+        
         if (_moving)
-            airplane.MovePosition(
-                airplane.transform.position + 
-                airplane.transform.forward * 
-                _movementSpeed * 
-                Time.deltaTime
-            );
-        else {}
+            airplane.MovePosition(currentPosition + forwardDirection * _movementSpeed * Time.deltaTime);
 
-        if (_rotating)
-            rotateAirplane(rotation);
+        if (_rotatingVertically) rotateAirplaneVertically(rotation);
     }
     
     
-    private void rotateAirplane(Vector3 eulerAngles)
+    private void rotateAirplaneVertically(Vector3 eulerAngles)
     {
         airplane.transform.Rotate(rotation, Space.Self);;
-        _rotating = false;
+        _rotatingVertically = false;
     }
 }

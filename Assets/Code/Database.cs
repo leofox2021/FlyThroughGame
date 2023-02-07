@@ -1,6 +1,8 @@
-﻿namespace Database {
+﻿using UnityEngine;
+
+namespace Database {
     
-    public static class Keys {
+    public class Keys : MonoBehaviour {
         public static string startKey = "up";
         public static string stopKey = "down";
         public static string rightKey = "d";
