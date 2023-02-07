@@ -8,42 +8,95 @@ using Database;
 public class PlaneMove : MonoBehaviour 
 {
     [SerializeField] private Rigidbody airplane;
-    [SerializeField] private float _speed;
+    [SerializeField] private float _movementSpeed;
+    [SerializeField] private float _rotationStep;
+    [SerializeField] private float _peakRotation;
 
     private Vector3 direction;
+    private Vector3 rotation;
+    
     private bool _moving;
+    private bool _rotating;
 
     public void Start() 
     {
         _moving = false;
+        direction.Set(0, 0, 0.5f);
     }
 
     
-    public void Update() 
+    public void Update()
     {
-        // Start / stop
-        if (Input.GetKey(Keys.startKey)) _moving = true;
-        else if (Input.GetKey(Keys.stopKey)) _moving = false;
-    }
-
-    
-    public void FixedUpdate() {
-        if (_moving) 
+        float currentX = airplane.transform.rotation.x;
+        float currentY = airplane.transform.rotation.y;
+        float currentZ = airplane.transform.rotation.z;
+        
+        if (Input.GetKey(Keys.startKey))
         {
-            direction = new Vector3(0, 0, 1);
-            moveAirplane(direction, "The plane is now moving");   
-        }   
-        else 
+            _moving = true;
+        }
+        else if (Input.GetKey(Keys.stopKey))
         {
-            direction = new Vector3(0, 0, 0);
-            moveAirplane(direction, "The plane has stopped moving");
+            direction.Set(0, 0, 0);
+            _moving = false;
+        }
+        
+        if (Input.GetKey(Keys.rightKey))
+        {
+            if (currentZ < _peakRotation)
+            {
+                _rotating = true;
+                rotation.Set(_rotationStep / 10, currentY, -_rotationStep);
+            }
+        }
+        else if (Input.GetKey(Keys.leftKey))
+        {
+            if (currentZ > -_peakRotation)
+            {
+                _rotating = true;
+                rotation.Set(_rotationStep / 10, currentY, _rotationStep);
+            }
+        }
+        
+        if (Input.GetKey(Keys.upkey))
+        {
+            if (currentX > -_peakRotation)
+            {
+                _rotating = true;
+                rotation.Set(_rotationStep, currentY, currentZ);
+            }
+            
+        }
+        else if (Input.GetKey(Keys.downKey))
+        {
+            if (currentX < _peakRotation)
+            {
+                _rotating = true;
+                rotation.Set(-_rotationStep, currentY, currentZ);
+            }
         }
     }
+
     
-    
-    private void moveAirplane(Vector3 direction, string debugMessage) 
+    public void FixedUpdate() 
     {
-        airplane.velocity = direction * _speed;
-        Debug.Log(debugMessage);
+        if (_moving)
+            airplane.MovePosition(
+                airplane.transform.position + 
+                airplane.transform.forward * 
+                _movementSpeed * 
+                Time.deltaTime
+            );
+        else {}
+
+        if (_rotating)
+            rotateAirplane(rotation);
+    }
+    
+    
+    private void rotateAirplane(Vector3 eulerAngles)
+    {
+        airplane.transform.Rotate(rotation, Space.Self);;
+        _rotating = false;
     }
 }
