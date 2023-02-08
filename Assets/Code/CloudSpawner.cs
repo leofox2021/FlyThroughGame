@@ -26,43 +26,56 @@ public class CloudSpawner : MonoBehaviour
     public void initialSpawn()
     {
         ObjectPool.Instance.generateClouds();
+        Debug.Log("All clouds have been spawned!");
         
         foreach (GameObject cloud in ObjectPool.Instance.pool)
         {
-            Debug.Log("Location a new cloud in the sky...");
-            float randomX = random.Next(_mapBoundaryX1, _mapBoundaryX2);
-            float randomZ = random.Next(_mapBoundaryZ1, _mapBoundaryZ2);
-            // float xDeviation;
-            // float zDeviation;
+            Vector3 position = generatePosition(cloud);
             
-            Vector3 randomSpawnPosition = new Vector3(randomX, _height, randomZ);
-            // Vector3 position = cloud.transform.position;
-            // Vector3 closestPoint;
-            //
-            // CapsuleCollider neighbourCollider;
-            //
-            //     foreach (GameObject otherCloud in ObjectPool.Instance.pool)
-            //     {
-            //         if (otherCloud.activeInHierarchy && otherCloud != cloud)
-            //         {
-            //             neighbourCollider = otherCloud.GetComponentInChildren<CapsuleCollider>();
-            //             closestPoint = neighbourCollider.ClosestPoint(position);
-            //
-            //             xDeviation = closestPoint.x - position.x;
-            //             zDeviation = closestPoint.z - position.z;
-            //             
-            //             if (xDeviation < -_distanceBetweenClouds || xDeviation > _distanceBetweenClouds)
-            //             {
-            //                 if (zDeviation < -_distanceBetweenClouds || zDeviation > _distanceBetweenClouds)
-            //                     cloud.transform.position = randomSpawnPosition;
-            //             }
-            //         }
-            //     }
-
-            cloud.transform.position = randomSpawnPosition;
+            cloud.transform.position = position;
             cloud.SetActive(true);
-            
-            Debug.Log("Cloud active!");
         }
+    }
+    
+    
+    private Vector3 generatePosition(GameObject cloud)
+    {
+        Vector3 randomSpawnPosition = new Vector3();
+        bool wrongPosition = true;
+        int iteration; 
+        
+        while (true)
+        {
+            iteration = 1;
+            
+            foreach (GameObject otherCloud in ObjectPool.Instance.pool)
+            {
+                iteration += 1;
+                Debug.Log($"Iteration number {iteration}");
+                
+                float randomX = random.Next(_mapBoundaryX1, _mapBoundaryX2);
+                float randomZ = random.Next(_mapBoundaryZ1, _mapBoundaryZ2);
+            
+                randomSpawnPosition = new Vector3(randomX, _height, randomZ);
+            
+                float distance = Vector3.Distance(randomSpawnPosition, otherCloud.transform.position);
+                
+                if (distance > 100)
+                {
+                    wrongPosition = false;
+                    Debug.Log($"Distance RIGHT {distance}");
+                } 
+                else
+                {
+                    wrongPosition = true;
+                    Debug.Log($"Distance WRONG {distance}");
+                    break;
+                }
+            }
+
+            if (wrongPosition == false) break;
+        }
+
+        return randomSpawnPosition;
     }
 }

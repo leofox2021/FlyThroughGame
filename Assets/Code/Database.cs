@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 
+// ReSharper disable All
+
 namespace Database {
     
     public class Keys : MonoBehaviour {

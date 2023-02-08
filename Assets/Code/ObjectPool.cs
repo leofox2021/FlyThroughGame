@@ -11,7 +11,7 @@ public class ObjectPool : MonoBehaviour
     private static ObjectPool instance;
     public static ObjectPool Instance { get { return instance; } }
     
-    public List<GameObject> pool = new List<GameObject>();
+    public List<GameObject> pool = new List<GameObject>(){};
     
     
     public void Awake()
@@ -23,12 +23,22 @@ public class ObjectPool : MonoBehaviour
 
     public void generateClouds()
     {
-        for (int i = 0; i < _amountToPool; i++)
+        if (this.pool.Count == 0)
         {
-            GameObject newObject = Instantiate(prefab);
-            newObject.SetActive(false);
-            pool.Add(newObject);
+            for (int i = 0; i < _amountToPool; i++)
+            {
+                GameObject newObject = Instantiate(prefab);
+                newObject.SetActive(false);
+                pool.Add(newObject);
+                
+                Debug.Log($"Cloud number {i} has been spawned!");
+            } 
         }
+        else
+        {
+            Debug.Log("Your clouds are already generated!");
+        }
+        
     }
     
     

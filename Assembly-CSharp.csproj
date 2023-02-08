@@ -47,6 +47,7 @@
   <ItemGroup>
      <Compile Include="Assets\Code\PlaneMove.cs" />
      <Compile Include="Assets\Code\CloudSpawner.cs" />
+     <Compile Include="Assets\Code\Cloud.cs" />
      <Compile Include="Assets\Code\Database.cs" />
      <Compile Include="Assets\Code\ObjectPool.cs" />
      <Folder Include="Assets" />
