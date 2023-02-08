@@ -819,11 +819,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e711ba71a9e5264bae8c7d143936fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _height: 110
-  _mapBoundaryX1: -175
-  _mapBoundaryX2: 180
-  _mapBoundaryZ1: -195
-  _mapBoundaryZ2: 195
   _distanceBetweenClouds: 5
 --- !u!4 &1225489768
 Transform:
@@ -1028,7 +1023,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 7069573528123577550, guid: 5d4e81e1bec6b93429f7244abf61e1fe, type: 3}
-  _amountToPool: 10
+  _amountToPool: 20
   pool: []
 --- !u!4 &1502100538
 Transform:

@@ -38,18 +38,5 @@ public class ObjectPool : MonoBehaviour
         {
             Debug.Log("Your clouds are already generated!");
         }
-        
     }
-    
-    
-    public GameObject getPooledObject()
-    {
-        foreach (GameObject obj in pool)
-        {
-            if (!obj.activeInHierarchy)
-                return obj;
-        }
-
-        return null;
-    } 
 }

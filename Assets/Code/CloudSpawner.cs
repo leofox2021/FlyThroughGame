@@ -1,16 +1,12 @@
+using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
+using Database;
 using UnityEngine;
 
 // ReSharper disable All
 
 public class CloudSpawner : MonoBehaviour
 {
-    [SerializeField] private int _height;
-    [SerializeField] private int _mapBoundaryX1;
-    [SerializeField] private int _mapBoundaryX2;
-    [SerializeField] private int _mapBoundaryZ1;
-    [SerializeField] private int _mapBoundaryZ2;
     [SerializeField] private int _distanceBetweenClouds;
 
     private List<GameObject> cloudsInField = new List<GameObject>();
@@ -20,6 +16,28 @@ public class CloudSpawner : MonoBehaviour
     public void Start()
     {
         initialSpawn();
+    }
+
+
+    public void Update()
+    {
+        spawnInactive();
+    }
+
+    
+    public void spawnInactive()
+    {
+        foreach (GameObject cloud in ObjectPool.Instance.pool)
+        {
+            if (!cloud.activeInHierarchy)
+            {
+                float randomX = random.Next(Constants.MapBoundaryX1, Constants.MapBoundaryX2);
+                Vector3 newPosition = new Vector3(randomX, Constants.Height, Constants.MapBoundaryZ2);
+                
+                cloud.transform.position = newPosition;
+                cloud.SetActive(true);
+            }
+        }    
     }
     
     
@@ -42,21 +60,15 @@ public class CloudSpawner : MonoBehaviour
     {
         Vector3 randomSpawnPosition = new Vector3();
         bool wrongPosition = true;
-        int iteration; 
         
         while (true)
         {
-            iteration = 1;
-            
             foreach (GameObject otherCloud in ObjectPool.Instance.pool)
             {
-                iteration += 1;
-                Debug.Log($"Iteration number {iteration}");
-                
-                float randomX = random.Next(_mapBoundaryX1, _mapBoundaryX2);
-                float randomZ = random.Next(_mapBoundaryZ1, _mapBoundaryZ2);
+                float randomX = random.Next(Constants.MapBoundaryX1, Constants.MapBoundaryX2);
+                float randomZ = random.Next(Constants.MapBoundaryZ1, Constants.MapBoundaryZ2);
             
-                randomSpawnPosition = new Vector3(randomX, _height, randomZ);
+                randomSpawnPosition = new Vector3(randomX, Constants.Height, randomZ);
             
                 float distance = Vector3.Distance(randomSpawnPosition, otherCloud.transform.position);
                 

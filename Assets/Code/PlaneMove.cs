@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEngine;
 using Database;
 // ReSharper disable All
@@ -15,8 +14,7 @@ public class PlaneMove : MonoBehaviour
     private Vector3 rotation;
     
     private bool _moving;
-    private bool _rotatingHorizontally;
-    private bool _rotatingVertically;
+    private bool _rotating;
     
     public void Start() 
     {
@@ -45,7 +43,7 @@ public class PlaneMove : MonoBehaviour
         {
             if (currentZ < _peakRotation)
             {
-                _rotatingVertically = true;
+                _rotating = true;
                 rotation.Set(currentX, _rotationStep / 4, -_rotationStep);
             }
         }
@@ -53,7 +51,7 @@ public class PlaneMove : MonoBehaviour
         {
             if (currentZ > -_peakRotation)
             {
-                _rotatingVertically = true;
+                _rotating = true;
                 rotation.Set(currentX, -_rotationStep / 4, _rotationStep);
             }
         }
@@ -62,7 +60,7 @@ public class PlaneMove : MonoBehaviour
         {
             if (currentX > -_peakRotation)
             {
-                _rotatingVertically = true;
+                _rotating = true;
                 rotation.Set(_rotationStep, currentY, currentZ);
             }
             
@@ -71,7 +69,7 @@ public class PlaneMove : MonoBehaviour
         {
             if (currentX < _peakRotation)
             {
-                _rotatingVertically = true;
+                _rotating = true;
                 rotation.Set(-_rotationStep, currentY, currentZ);
             }
         }
@@ -86,13 +84,13 @@ public class PlaneMove : MonoBehaviour
         if (_moving)
             airplane.MovePosition(currentPosition + forwardDirection * _movementSpeed * Time.deltaTime);
 
-        if (_rotatingVertically) rotateAirplaneVertically(rotation);
+        if (_rotating) rotateAirplane(rotation);
     }
     
     
-    private void rotateAirplaneVertically(Vector3 eulerAngles)
+    private void rotateAirplane(Vector3 eulerAngles)
     {
         airplane.transform.Rotate(rotation, Space.Self);;
-        _rotatingVertically = false;
+        _rotating = false;
     }
 }
