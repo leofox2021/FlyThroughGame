@@ -12,7 +12,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{d3fd4afc-a1fa-8519-ca24-3a88c5a5aa36}</ProjectGuid>
+    <ProjectGuid>{17273978-8ed2-291b-cfba-0651753be3d7}</ProjectGuid>
     <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -45,19 +45,23 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\2022.2.5f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Code\Database.cs" />
      <Compile Include="Assets\Code\PlaneMove.cs" />
+     <Compile Include="Assets\Code\CloudSpawner.cs" />
+     <Compile Include="Assets\Code\Database.cs" />
+     <Compile Include="Assets\Code\ObjectPool.cs" />
      <Folder Include="Assets" />
-     <Folder Include="Assets\Pics" />
+     <Folder Include="Assets\PIcs" />
      <Folder Include="Assets\Code" />
      <Folder Include="Assets\3D\Airbus A310\Texture\Materials" />
+     <Folder Include="Assets\3D\Cloud" />
      <Folder Include="Assets\3D\Airbus A310" />
+     <Folder Include="Assets\Tree" />
      <Folder Include="Assets\3D\Airbus A310\Texture" />
      <Folder Include="Assets\Materials" />
      <Folder Include="Assets\Scenes" />
      <Folder Include="Assets\3D" />
      <Folder Include="Assets\3D\Tree" />
-     <Folder Include="Assets\Pics\Materials" />
+     <Folder Include="Assets\PIcs\Materials" />
      <Reference Include="UnityEngine">
      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.2.5f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
      </Reference>
@@ -303,18 +307,6 @@
      </Reference>
      <Reference Include="UnityEditor.UnityConnectModule">
      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.2.5f1\Editor\Data\Managed\UnityEngine\UnityEditor.UnityConnectModule.dll</HintPath>
-     </Reference>
-     <Reference Include="ReportGeneratorMerged">
-     <HintPath>C:\C#\Unity\ILS Flight Simulator\Library\PackageCache\com.unity.testtools.codecoverage@1.2.2\lib\ReportGenerator\ReportGeneratorMerged.dll</HintPath>
-     </Reference>
-     <Reference Include="Unity.VisualScripting.Antlr3.Runtime">
-     <HintPath>C:\C#\Unity\ILS Flight Simulator\Library\PackageCache\com.unity.visualscripting@1.8.0\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
-     </Reference>
-     <Reference Include="UnityEditor.iOS.Extensions.Xcode">
-     <HintPath>C:\Program Files\Unity\Hub\Editor\2022.2.5f1\Editor\Data\PlaybackEngines\iOSSupport\UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
-     </Reference>
-     <Reference Include="UnityEditor.iOS.Extensions.Common">
-     <HintPath>C:\Program Files\Unity\Hub\Editor\2022.2.5f1\Editor\Data\PlaybackEngines\iOSSupport\UnityEditor.iOS.Extensions.Common.dll</HintPath>
      </Reference>
      <Reference Include="Unity.Android.Types">
      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.2.5f1\Editor\Data\PlaybackEngines\AndroidPlayer\Unity.Android.Types.dll</HintPath>
@@ -691,83 +683,17 @@
      <Reference Include="System.Xml.Serialization">
      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.2.5f1\Editor\Data\NetStandard\compat\2.1.0\shims\netfx\System.Xml.Serialization.dll</HintPath>
      </Reference>
-     <Reference Include="Unity.Timeline">
-     <HintPath>C:\C#\Unity\ILS Flight Simulator\Library\ScriptAssemblies\Unity.Timeline.dll</HintPath>
-     </Reference>
-     <Reference Include="Unity.TestTools.CodeCoverage.Editor.OpenCover.Mono.Reflection">
-     <HintPath>C:\C#\Unity\ILS Flight Simulator\Library\ScriptAssemblies\Unity.TestTools.CodeCoverage.Editor.OpenCover.Mono.Reflection.dll</HintPath>
-     </Reference>
      <Reference Include="Unity.Sysroot.Linux_x86_64">
-     <HintPath>C:\C#\Unity\ILS Flight Simulator\Library\ScriptAssemblies\Unity.Sysroot.Linux_x86_64.dll</HintPath>
-     </Reference>
-     <Reference Include="UnityEngine.UI">
-     <HintPath>C:\C#\Unity\ILS Flight Simulator\Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
-     </Reference>
-     <Reference Include="Unity.EditorCoroutines.Editor">
-     <HintPath>C:\C#\Unity\ILS Flight Simulator\Library\ScriptAssemblies\Unity.EditorCoroutines.Editor.dll</HintPath>
-     </Reference>
-     <Reference Include="Unity.VisualScripting.SettingsProvider.Editor">
-     <HintPath>C:\C#\Unity\ILS Flight Simulator\Library\ScriptAssemblies\Unity.VisualScripting.SettingsProvider.Editor.dll</HintPath>
-     </Reference>
-     <Reference Include="Unity.Performance.Profile-Analyzer.Editor">
-     <HintPath>C:\C#\Unity\ILS Flight Simulator\Library\ScriptAssemblies\Unity.Performance.Profile-Analyzer.Editor.dll</HintPath>
-     </Reference>
-     <Reference Include="Unity.TestTools.CodeCoverage.Editor">
-     <HintPath>C:\C#\Unity\ILS Flight Simulator\Library\ScriptAssemblies\Unity.TestTools.CodeCoverage.Editor.dll</HintPath>
+     <HintPath>C:\С#\Unity\FlyThroughGame\Library\ScriptAssemblies\Unity.Sysroot.Linux_x86_64.dll</HintPath>
      </Reference>
      <Reference Include="Unity.SysrootPackage.Editor">
-     <HintPath>C:\C#\Unity\ILS Flight Simulator\Library\ScriptAssemblies\Unity.SysrootPackage.Editor.dll</HintPath>
-     </Reference>
-     <Reference Include="Unity.TestTools.CodeCoverage.Editor.OpenCover.Model">
-     <HintPath>C:\C#\Unity\ILS Flight Simulator\Library\ScriptAssemblies\Unity.TestTools.CodeCoverage.Editor.OpenCover.Model.dll</HintPath>
-     </Reference>
-     <Reference Include="Unity.PlasticSCM.Editor">
-     <HintPath>C:\C#\Unity\ILS Flight Simulator\Library\ScriptAssemblies\Unity.PlasticSCM.Editor.dll</HintPath>
-     </Reference>
-     <Reference Include="Unity.VisualScripting.State.Editor">
-     <HintPath>C:\C#\Unity\ILS Flight Simulator\Library\ScriptAssemblies\Unity.VisualScripting.State.Editor.dll</HintPath>
-     </Reference>
-     <Reference Include="Unity.Timeline.Editor">
-     <HintPath>C:\C#\Unity\ILS Flight Simulator\Library\ScriptAssemblies\Unity.Timeline.Editor.dll</HintPath>
-     </Reference>
-     <Reference Include="Unity.VisualScripting.Shared.Editor">
-     <HintPath>C:\C#\Unity\ILS Flight Simulator\Library\ScriptAssemblies\Unity.VisualScripting.Shared.Editor.dll</HintPath>
-     </Reference>
-     <Reference Include="Unity.VisualStudio.Editor">
-     <HintPath>C:\C#\Unity\ILS Flight Simulator\Library\ScriptAssemblies\Unity.VisualStudio.Editor.dll</HintPath>
-     </Reference>
-     <Reference Include="Unity.TextMeshPro">
-     <HintPath>C:\C#\Unity\ILS Flight Simulator\Library\ScriptAssemblies\Unity.TextMeshPro.dll</HintPath>
-     </Reference>
-     <Reference Include="Unity.VisualScripting.Core">
-     <HintPath>C:\C#\Unity\ILS Flight Simulator\Library\ScriptAssemblies\Unity.VisualScripting.Core.dll</HintPath>
-     </Reference>
-     <Reference Include="Unity.TextMeshPro.Editor">
-     <HintPath>C:\C#\Unity\ILS Flight Simulator\Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll</HintPath>
-     </Reference>
-     <Reference Include="UnityEditor.UI">
-     <HintPath>C:\C#\Unity\ILS Flight Simulator\Library\ScriptAssemblies\UnityEditor.UI.dll</HintPath>
-     </Reference>
-     <Reference Include="Unity.VisualScripting.Core.Editor">
-     <HintPath>C:\C#\Unity\ILS Flight Simulator\Library\ScriptAssemblies\Unity.VisualScripting.Core.Editor.dll</HintPath>
+     <HintPath>C:\С#\Unity\FlyThroughGame\Library\ScriptAssemblies\Unity.SysrootPackage.Editor.dll</HintPath>
      </Reference>
      <Reference Include="Unity.Rider.Editor">
-     <HintPath>C:\C#\Unity\ILS Flight Simulator\Library\ScriptAssemblies\Unity.Rider.Editor.dll</HintPath>
-     </Reference>
-     <Reference Include="Unity.VisualScripting.State">
-     <HintPath>C:\C#\Unity\ILS Flight Simulator\Library\ScriptAssemblies\Unity.VisualScripting.State.dll</HintPath>
-     </Reference>
-     <Reference Include="Unity.VSCode.Editor">
-     <HintPath>C:\C#\Unity\ILS Flight Simulator\Library\ScriptAssemblies\Unity.VSCode.Editor.dll</HintPath>
+     <HintPath>C:\С#\Unity\FlyThroughGame\Library\ScriptAssemblies\Unity.Rider.Editor.dll</HintPath>
      </Reference>
      <Reference Include="Unity.Toolchain.Win-x86_64-Linux-x86_64">
-     <HintPath>C:\C#\Unity\ILS Flight Simulator\Library\ScriptAssemblies\Unity.Toolchain.Win-x86_64-Linux-x86_64.dll</HintPath>
-     </Reference>
-     <Reference Include="Unity.VisualScripting.Flow">
-     <HintPath>C:\C#\Unity\ILS Flight Simulator\Library\ScriptAssemblies\Unity.VisualScripting.Flow.dll</HintPath>
-     </Reference>
-     <Reference Include="Unity.VisualScripting.Flow.Editor">
-     <HintPath>C:\C#\Unity\ILS Flight Simulator\Library\ScriptAssemblies\Unity.VisualScripting.Flow.Editor.dll</HintPath>
+     <HintPath>C:\С#\Unity\FlyThroughGame\Library\ScriptAssemblies\Unity.Toolchain.Win-x86_64-Linux-x86_64.dll</HintPath>
      </Reference>
   </ItemGroup>
   <ItemGroup>

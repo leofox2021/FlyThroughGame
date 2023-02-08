@@ -10,6 +10,7 @@ public class PlaneMove : MonoBehaviour
     [SerializeField] private float _rotationStep;
     [SerializeField] private float _peakRotation;
     
+    
     private Vector3 direction;
     private Vector3 rotation;
     
