@@ -9,20 +9,10 @@ public class ObjectPool : MonoBehaviour
     [SerializeField] private int _amountToPool;
 
     private static ObjectPool instance;
-    public static ObjectPool Instance
-    {
-        get { return instance; }
-        set { instance = new ObjectPool(); }
-    }
+    public static ObjectPool Instance { get { return instance; } }
     
     public List<GameObject> pool = new List<GameObject>();
-
-    private bool _filling = true;
-    public bool Filling
-    {
-        get { return _filling;  }
-    }
-
+    
     
     public void Awake()
     {
@@ -30,19 +20,15 @@ public class ObjectPool : MonoBehaviour
             instance = this;
     }
 
-    
-    public void Start()
+
+    public void generateClouds()
     {
         for (int i = 0; i < _amountToPool; i++)
         {
             GameObject newObject = Instantiate(prefab);
             newObject.SetActive(false);
             pool.Add(newObject);
-            
-            Debug.Log($"Cloud number {i} has been spawned");
         }
-
-        _filling = false;
     }
     
     

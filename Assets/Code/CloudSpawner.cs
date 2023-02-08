@@ -21,24 +21,11 @@ public class CloudSpawner : MonoBehaviour
     {
         initialSpawn();
     }
-
     
-    public void Update()
+    
+    public void initialSpawn()
     {
-    
-    }
-    
-    
-    public async void initialSpawn()
-    {
-        // No async function can use with unity methods
-        // Thus it is useless here
-        // But is used to delay the run of initialSpawn and let clouds spawn
-        await Task.Run(() =>
-        {
-       
-        });
-
+        ObjectPool.Instance.generateClouds();
         
         foreach (GameObject cloud in ObjectPool.Instance.pool)
         {
