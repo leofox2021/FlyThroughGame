@@ -6,11 +6,13 @@ using UnityEngine.UIElements;
 public class UserInterface : MonoBehaviour
 {
     [SerializeField] private PlaneMove plane;
-
+    [SerializeField] private WaypointSpawner waypointSpawner;
+    
     private VisualElement root;
+    
     private Button startMovementButton;
     private Button stopMovementButton;
-    
+    private Button newWaypointButton;
     
     public void OnEnable()
     {
@@ -18,12 +20,14 @@ public class UserInterface : MonoBehaviour
 
         startMovementButton = root.Q<Button>("StartFlightButton");
         stopMovementButton = root.Q<Button>("StopFlightButton");
-
+        newWaypointButton = root.Q<Button>("NewWaypointButton");
+        
         startMovementButton.clicked += StartMovementButtonOnclicked;
         stopMovementButton.clicked += StopMovementButtonOnclicked;
+        newWaypointButton.clicked += NewWaypointButtonOnclicked;
     }
-
     
+
     private void StartMovementButtonOnclicked()
     {
         plane.setMovingOn();
@@ -34,4 +38,11 @@ public class UserInterface : MonoBehaviour
     {
         plane.setMovingOff();
     }
+    
+    
+    private void NewWaypointButtonOnclicked()
+    {
+        waypointSpawner.generateWaypoint();
+    }
+
 }

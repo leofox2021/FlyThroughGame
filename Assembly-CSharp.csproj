@@ -45,6 +45,7 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\2022.2.5f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Code\WaypointSpawner.cs" />
      <Compile Include="Assets\Code\PlaneMove.cs" />
      <Compile Include="Assets\Code\CloudSpawner.cs" />
      <Compile Include="Assets\Code\CameraFollow.cs" />
@@ -52,26 +53,27 @@
      <Compile Include="Assets\Code\Database.cs" />
      <Compile Include="Assets\Code\UserInterface.cs" />
      <Compile Include="Assets\Code\ObjectPool.cs" />
+     <Compile Include="Assets\Code\MouseDrag.cs" />
      <Folder Include="Assets" />
      <Folder Include="Assets\PIcs" />
      <Folder Include="Assets\Code" />
      <None Include="Assets\UI Toolkit\BasicUiTest.uxml" />
      <Folder Include="Assets\3D\Airbus A310\Texture\Materials" />
      <Folder Include="Assets\3D\Cloud" />
-     <Folder Include="Assets\3D\59-earth\Materials" />
+     <Folder Include="Assets\3D\Earth\Materials" />
+     <Folder Include="Assets\3D\Earth" />
      <Folder Include="Assets\3D\Airbus A310" />
      <Folder Include="Assets\UI Toolkit" />
-     <Folder Include="Assets\Tree" />
      <Folder Include="Assets\3D\Airbus A310\Texture" />
      <Folder Include="Assets\UI Toolkit\UnityThemes" />
-     <Folder Include="Assets\3D\59-earth\textures" />
+     <Folder Include="Assets\3D\Earth\textures" />
      <Folder Include="Assets\Materials" />
      <Folder Include="Assets\Scenes" />
      <Folder Include="Assets\3D" />
-     <Folder Include="Assets\3D\59-earth" />
      <Folder Include="Assets\3D\Tree" />
      <Folder Include="Assets\PIcs\Materials" />
      <Folder Include="Assets\UI Toolkit\Layouts" />
+     <Folder Include="Assets\Animations" />
      <Reference Include="UnityEngine">
      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.2.5f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
      </Reference>
