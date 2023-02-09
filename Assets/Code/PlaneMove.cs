@@ -15,7 +15,7 @@ public class PlaneMove : MonoBehaviour
     
     private bool _moving;
     private bool _rotating;
-    
+
     public void Start() 
     {
         _moving = false;
@@ -31,12 +31,11 @@ public class PlaneMove : MonoBehaviour
         
         if (Input.GetKey(Keys.startKey))
         {
-            _moving = true;
+            setMovingOn();
         }
         else if (Input.GetKey(Keys.stopKey))
         {
-            direction.Set(0, 0, 0);
-            _moving = false;
+            setMovingOff();
         }
         
         if (Input.GetKey(Keys.rightKey))
@@ -87,6 +86,18 @@ public class PlaneMove : MonoBehaviour
         if (_rotating) rotateAirplane(rotation);
     }
     
+    
+    public void setMovingOn()
+    {
+        _moving = true;
+    }
+    
+    
+    public void setMovingOff()
+    {
+        direction.Set(0, 0, 0);
+        _moving = false;
+    }
     
     private void rotateAirplane(Vector3 eulerAngles)
     {

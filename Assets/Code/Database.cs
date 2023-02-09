@@ -20,5 +20,4 @@ namespace Database {
         public const int MapBoundaryZ1 = -195;
         public const int MapBoundaryZ2 = 195;
     }
-    
 }

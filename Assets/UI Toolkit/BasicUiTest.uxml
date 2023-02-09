@@ -1,0 +1,4 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <ui:Button text="Start the Flight" display-tooltip-when-elided="true" name="StartFlightButton" style="opacity: 1; visibility: visible; height: 103px; width: 423px; left: 1015px; right: 474px; bottom: 15px; font-size: 30px; -unity-font-style: bold; top: 958px; position: absolute; background-color: rgba(255, 255, 255, 0.31);" />
+    <ui:Button text="Stop the flight" display-tooltip-when-elided="true" name="StopFlightButton" style="opacity: 1; visibility: visible; height: 103px; width: 423px; left: 1467px; right: 22px; bottom: 15px; font-size: 30px; -unity-font-style: bold; top: 958px; position: absolute; background-color: rgba(255, 255, 255, 0.31);" />
+</ui:UXML>
