@@ -27,7 +27,7 @@ public class CloudSpawner : MonoBehaviour
     
     public void spawnInactive()
     {
-        foreach (GameObject cloud in ObjectPool.Instance.pool)
+        foreach (GameObject cloud in CloudPool.Instance.pool)
         {
             if (!cloud.activeInHierarchy)
             {
@@ -43,10 +43,10 @@ public class CloudSpawner : MonoBehaviour
     
     public void initialSpawn()
     {
-        ObjectPool.Instance.generateClouds();
+        CloudPool.Instance.generateClouds();
         Debug.Log("All clouds have been spawned!");
         
-        foreach (GameObject cloud in ObjectPool.Instance.pool)
+        foreach (GameObject cloud in CloudPool.Instance.pool)
         {
             Vector3 position = generatePosition(cloud);
             
@@ -63,7 +63,7 @@ public class CloudSpawner : MonoBehaviour
         
         while (true)
         {
-            foreach (GameObject otherCloud in ObjectPool.Instance.pool)
+            foreach (GameObject otherCloud in CloudPool.Instance.pool)
             {
                 float randomX = random.Next(Constants.MapBoundaryX1, Constants.MapBoundaryX2);
                 float randomZ = random.Next(Constants.MapBoundaryZ1, Constants.MapBoundaryZ2);

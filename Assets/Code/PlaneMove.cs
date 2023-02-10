@@ -1,5 +1,6 @@
 using UnityEngine;
-using Database;
+using static Database.Keys;
+
 // ReSharper disable All
 
 public class PlaneMove : MonoBehaviour 
@@ -22,59 +23,7 @@ public class PlaneMove : MonoBehaviour
         direction.Set(0, 0, 0.5f);
     }
 
-    
-    public void Update()
-    {
-        float currentX = airplane.transform.rotation.x;
-        float currentY = airplane.transform.rotation.y;
-        float currentZ = airplane.transform.rotation.z;
-        
-        if (Input.GetKey(Keys.startKey))
-        {
-            setMovingOn();
-        }
-        else if (Input.GetKey(Keys.stopKey))
-        {
-            setMovingOff();
-        }
-        
-        if (Input.GetKey(Keys.rightKey))
-        {
-            if (currentZ < _peakRotation)
-            {
-                _rotating = true;
-                rotation.Set(currentX, _rotationStep / 4, -_rotationStep);
-            }
-        }
-        else if (Input.GetKey(Keys.leftKey))
-        {
-            if (currentZ > -_peakRotation)
-            {
-                _rotating = true;
-                rotation.Set(currentX, -_rotationStep / 4, _rotationStep);
-            }
-        }
-        
-        if (Input.GetKey(Keys.upkey))
-        {
-            if (currentX > -_peakRotation)
-            {
-                _rotating = true;
-                rotation.Set(_rotationStep, currentY, currentZ);
-            }
-            
-        }
-        else if (Input.GetKey(Keys.downKey))
-        {
-            if (currentX < _peakRotation)
-            {
-                _rotating = true;
-                rotation.Set(-_rotationStep, currentY, currentZ);
-            }
-        }
-    }
 
-    
     public void FixedUpdate()
     {
         Vector3 currentPosition = airplane.transform.position;
@@ -82,7 +31,7 @@ public class PlaneMove : MonoBehaviour
         
         if (_moving)
             airplane.MovePosition(currentPosition + forwardDirection * _movementSpeed * Time.deltaTime);
-
+        
         if (_rotating) rotateAirplane(rotation);
     }
     
@@ -98,6 +47,7 @@ public class PlaneMove : MonoBehaviour
         direction.Set(0, 0, 0);
         _moving = false;
     }
+    
     
     private void rotateAirplane(Vector3 eulerAngles)
     {

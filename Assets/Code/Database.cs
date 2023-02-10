@@ -1,14 +1,24 @@
-﻿// ReSharper disable All
+﻿using UnityEngine;
+
+// ReSharper disable All
 
 namespace Database {
     
-    public class Keys {
-        public static string startKey = "up";
-        public static string stopKey = "down";
-        public static string rightKey = "d";
-        public static string leftKey = "a";
-        public static string upkey = "w";
-        public static string downKey = "s";
+    public class Keys : MonoBehaviour {
+        public static KeyCode startKey = KeyCode.UpArrow;
+        public static KeyCode stopKey = KeyCode.DownArrow;
+        
+        public static KeyCode rightKey = KeyCode.D;
+        public static KeyCode leftKey = KeyCode.A;
+        
+        public static KeyCode upkey = KeyCode.Space;
+        public static KeyCode downKey = KeyCode.LeftShift;
+        
+        public static KeyCode forwardKey = KeyCode.W;
+        public static KeyCode backwardKey = KeyCode.S;
+
+        public static string mouseAxisX = "Mouse X";
+        public static string mouseAxisY = "Mouse Y";
     }
     
     
@@ -19,5 +29,30 @@ namespace Database {
         public const int MapBoundaryX2 = 180;
         public const int MapBoundaryZ1 = -195;
         public const int MapBoundaryZ2 = 195;
+    }
+    
+    
+    public static class Enums
+    {
+        public enum MovementsZ : byte
+        {
+            FORWARD,
+            BACKWARD, 
+            NONE
+        }
+        
+        public enum MovementsX : byte
+        {
+            RIGHT,
+            LEFT,
+            NONE
+        }
+        
+        public enum MovementsY : byte
+        {
+            UP, 
+            DOWN,
+            NONE
+        }
     }
 }
