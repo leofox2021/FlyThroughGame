@@ -2,9 +2,11 @@
 
 // ReSharper disable All
 
-namespace Database {
+namespace Database 
+{
     
-    public class Keys : MonoBehaviour {
+    public class Keys : MonoBehaviour 
+    {
         public static KeyCode startKey = KeyCode.UpArrow;
         public static KeyCode stopKey = KeyCode.DownArrow;
         

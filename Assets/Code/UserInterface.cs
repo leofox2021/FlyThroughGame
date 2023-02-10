@@ -44,5 +44,4 @@ public class UserInterface : MonoBehaviour
     {
         waypointSpawner.generateWaypoint();
     }
-
 }
