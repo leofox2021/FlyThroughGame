@@ -30,7 +30,7 @@ public class PlaneMove : MonoBehaviour
         if (_moving)
             _airplane.MovePosition(currentPosition + (forwardDirection * _movementSpeed * Time.deltaTime));
         
-        if (_rotating) rotateAirplane(_rotation);
+        if (_rotating) RotateAirplane(_rotation);
     }
     
     
@@ -47,7 +47,7 @@ public class PlaneMove : MonoBehaviour
     }
     
     
-    private void rotateAirplane(Vector3 eulerAngles)
+    private void RotateAirplane(Vector3 eulerAngles)
     {
         _airplane.transform.Rotate(_direction, Space.Self);;
         _rotating = false;

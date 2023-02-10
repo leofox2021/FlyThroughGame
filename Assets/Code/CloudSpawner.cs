@@ -14,17 +14,17 @@ public class CloudSpawner : MonoBehaviour
     
     public void Start()
     {
-        initialSpawn();
+        InitialSpawn();
     }
 
 
     public void Update()
     {
-        spawnInactive();
+        SpawnInactive();
     }
 
     
-    private void spawnInactive()
+    private void SpawnInactive()
     {
         foreach (GameObject cloud in CloudPool.Instance.Pool)
         {
@@ -40,13 +40,13 @@ public class CloudSpawner : MonoBehaviour
     }
     
     
-    private void initialSpawn()
+    private void InitialSpawn()
     {
         CloudPool.Instance.GenerateClouds();
         
         foreach (GameObject cloud in CloudPool.Instance.Pool)
         {
-            Vector3 position = generatePosition(cloud);
+            Vector3 position = GeneratePosition(cloud);
             
             cloud.transform.position = position;
             cloud.SetActive(true);
@@ -54,7 +54,7 @@ public class CloudSpawner : MonoBehaviour
     }
     
     
-    private Vector3 generatePosition(GameObject cloud)
+    private Vector3 GeneratePosition(GameObject cloud)
     {
         Vector3 randomSpawnPosition = new Vector3();
         bool wrongPosition = true;

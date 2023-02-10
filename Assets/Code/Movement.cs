@@ -20,44 +20,44 @@ public class Movement : MonoBehaviour
     
     private void Update()
     {
-        updateYawPitch();
-        followMouse();
+        UpdateYawPitch();
+        FollowMouse();
         
-        defineMovementAlongX();
-        defineMovementAlongY();
-        defineMovementAlongZ();
+        DefineMovementAlongX();
+        DefineMovementAlongY();
+        DefineMovementAlongZ();
     }
 
 
     private void FixedUpdate()
     {
-        movePlayerAlongX();
-        movePlayerAlongY();
-        movePlayerAlongZ();
+        MovePlayerAlongX();
+        MovePlayerAlongY();
+        MovePlayerAlongZ();
     }
     
     
-    private void movePlayer(Vector3 direction)
+    private void MovePlayer(Vector3 direction)
     {
         _player.MovePosition(_player.transform.position + (direction * _movementSpeed * Time.deltaTime));      
     }
     
     
-    private void stopPlayer()
+    private void StopPlayer()
     {
         Vector3 zeroVelocity = new Vector3(0, 0, 0);
         _player.velocity = zeroVelocity;
     }
     
     
-    private void updateYawPitch()
+    private void UpdateYawPitch()
     {
         _yaw += _mouseSensitivity * Input.GetAxis(MouseAxisX);
         _pitch -= _mouseSensitivity * Input.GetAxis(MouseAxisY);    
     }
     
     
-    private void defineMovementAlongX()
+    private void DefineMovementAlongX()
     {
         if (Input.GetKey(RightKey))
             _movementAlongX = MovementsX.RIGHT;
@@ -68,7 +68,7 @@ public class Movement : MonoBehaviour
     }
     
     
-    private void defineMovementAlongY()
+    private void DefineMovementAlongY()
     {
         if (Input.GetKey(UpKey))
             _movementAlongY = MovementsY.UP;
@@ -79,7 +79,7 @@ public class Movement : MonoBehaviour
     }
     
     
-    private void defineMovementAlongZ()
+    private void DefineMovementAlongZ()
     {
         if (Input.GetKey(ForwardKey))
             _movementAlongZ = MovementsZ.FORWARD;
@@ -91,40 +91,40 @@ public class Movement : MonoBehaviour
 
     
     
-    private void movePlayerAlongX()
+    private void MovePlayerAlongX()
     {
         if (_movementAlongX == MovementsX.RIGHT)
-            movePlayer(_player.transform.right);
+            MovePlayer(_player.transform.right);
         else if (_movementAlongX == MovementsX.LEFT)
-            movePlayer(-_player.transform.right);
+            MovePlayer(-_player.transform.right);
         else 
-            stopPlayer();
+            StopPlayer();
     }
     
     
-    private void movePlayerAlongY()
+    private void MovePlayerAlongY()
     {
         if (_movementAlongY == MovementsY.UP)
-            movePlayer(_player.transform.up);
+            MovePlayer(_player.transform.up);
         else if (_movementAlongY == MovementsY.DOWN)
-            movePlayer(-_player.transform.up);
+            MovePlayer(-_player.transform.up);
         else 
-            stopPlayer();
+            StopPlayer();
     }
     
     
-    private void movePlayerAlongZ()
+    private void MovePlayerAlongZ()
     {
         if (_movementAlongZ == MovementsZ.FORWARD)
-            movePlayer(_player.transform.forward);
+            MovePlayer(_player.transform.forward);
         else if (_movementAlongZ == MovementsZ.BACKWARD)
-            movePlayer(-_player.transform.forward);
+            MovePlayer(-_player.transform.forward);
         else 
-            stopPlayer();  
+            StopPlayer();  
     }
     
     
-    private void followMouse()
+    private void FollowMouse()
     {
         _player.transform.eulerAngles = new Vector3(_pitch, _yaw, 0.0f);
     }

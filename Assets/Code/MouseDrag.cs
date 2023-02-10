@@ -10,18 +10,18 @@ public class MouseDrag : MonoBehaviour
     
     private void OnMouseDrag()
     {
-        transform.position = getMousePosition() + _offset;
+        transform.position = GetMousePosition() + _offset;
     }
 
 
     private void OnMouseDown()
     {
         _mouseCoordinateZ = Camera.main.WorldToScreenPoint(gameObject.transform.position).z;
-        _offset = gameObject.transform.position - getMousePosition();
+        _offset = gameObject.transform.position - GetMousePosition();
     }
 
     
-    private Vector3 getMousePosition()
+    private Vector3 GetMousePosition()
     {
         Vector3 mousePosition = Input.mousePosition;
         mousePosition.z = _mouseCoordinateZ;
