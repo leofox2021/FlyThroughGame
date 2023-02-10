@@ -4,14 +4,12 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
-    [SerializeField] private Transform target;
-    [SerializeField] private Vector3 offset;
+    [SerializeField] private Transform _target;
 
-
-    public void LateUpdate()
+    private void LateUpdate()
     {
-        Vector3 cameraPosition = target.position;
-        Vector3 cameraRotation = target.eulerAngles;
+        Vector3 cameraPosition = _target.position;
+        Vector3 cameraRotation = _target.eulerAngles;
         
         transform.position = cameraPosition;
         transform.eulerAngles = cameraRotation;

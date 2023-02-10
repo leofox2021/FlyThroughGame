@@ -7,20 +7,20 @@ namespace Database
     
     public class Keys : MonoBehaviour 
     {
-        public static KeyCode startKey = KeyCode.UpArrow;
-        public static KeyCode stopKey = KeyCode.DownArrow;
+        public static KeyCode StartKey = KeyCode.UpArrow;
+        public static KeyCode StopKey = KeyCode.DownArrow;
         
-        public static KeyCode rightKey = KeyCode.D;
-        public static KeyCode leftKey = KeyCode.A;
+        public static KeyCode RightKey = KeyCode.D;
+        public static KeyCode LeftKey = KeyCode.A;
         
-        public static KeyCode upkey = KeyCode.Space;
-        public static KeyCode downKey = KeyCode.LeftShift;
+        public static KeyCode UpKey = KeyCode.Space;
+        public static KeyCode DownKey = KeyCode.LeftShift;
         
-        public static KeyCode forwardKey = KeyCode.W;
-        public static KeyCode backwardKey = KeyCode.S;
+        public static KeyCode ForwardKey = KeyCode.W;
+        public static KeyCode BackwardKey = KeyCode.S;
 
-        public static string mouseAxisX = "Mouse X";
-        public static string mouseAxisY = "Mouse Y";
+        public static string MouseAxisX = "Mouse X";
+        public static string MouseAxisY = "Mouse Y";
     }
     
     

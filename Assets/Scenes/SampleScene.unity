@@ -1542,7 +1542,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1922812926}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -1613,10 +1613,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1922812932}
-  _movementSpeed: 20
-  _mouseSensitivity: 0
-  _verticalSpeed: 1
-  _horizontalSpeed: 1
+  _movementSpeed: 40
+  _mouseSensitivity: 5
 --- !u!54 &1922812932
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1642,7 +1640,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!1 &1936960682
 GameObject:

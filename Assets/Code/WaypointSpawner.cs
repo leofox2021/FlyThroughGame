@@ -5,27 +5,27 @@ using UnityEngine;
 
 public class WaypointSpawner : MonoBehaviour
 {
-    [SerializeField] private GameObject prefab;
-    private List<GameObject> waypointList = new List<GameObject>();
+    [SerializeField] private GameObject _prefab;
+    private List<GameObject> _waypointList = new List<GameObject>();
     public List<GameObject> WaypointList
     {
         get
         {
-            return waypointList;
+            return _waypointList;
         }
     }
     public int WaypointCount
     {
         get
         {
-            return waypointList.Count;
+            return _waypointList.Count;
         }
     }
 
 
-    public void generateWaypoint()
+    public void GenerateWaypoint()
     {
-        GameObject newObject = Instantiate(prefab);
-        waypointList.Add(gameObject);
+        GameObject newObject = Instantiate(_prefab);
+        _waypointList.Add(gameObject);
     }
 }

@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using Database;
 using UnityEngine;
@@ -9,8 +8,8 @@ public class CloudSpawner : MonoBehaviour
 {
     [SerializeField] private int _distanceBetweenClouds;
 
-    private List<GameObject> cloudsInField = new List<GameObject>();
-    private System.Random random = new System.Random();
+    private List<GameObject> _cloudsInField = new List<GameObject>();
+    private System.Random _random = new System.Random();
 
     
     public void Start()
@@ -25,13 +24,13 @@ public class CloudSpawner : MonoBehaviour
     }
 
     
-    public void spawnInactive()
+    private void spawnInactive()
     {
-        foreach (GameObject cloud in CloudPool.Instance.pool)
+        foreach (GameObject cloud in CloudPool.Instance.Pool)
         {
             if (!cloud.activeInHierarchy)
             {
-                float randomX = random.Next(Constants.MapBoundaryX1, Constants.MapBoundaryX2);
+                float randomX = _random.Next(Constants.MapBoundaryX1, Constants.MapBoundaryX2);
                 Vector3 newPosition = new Vector3(randomX, Constants.Height, Constants.MapBoundaryZ2);
                 
                 cloud.transform.position = newPosition;
@@ -41,12 +40,11 @@ public class CloudSpawner : MonoBehaviour
     }
     
     
-    public void initialSpawn()
+    private void initialSpawn()
     {
-        CloudPool.Instance.generateClouds();
-        Debug.Log("All clouds have been spawned!");
+        CloudPool.Instance.GenerateClouds();
         
-        foreach (GameObject cloud in CloudPool.Instance.pool)
+        foreach (GameObject cloud in CloudPool.Instance.Pool)
         {
             Vector3 position = generatePosition(cloud);
             
@@ -63,24 +61,22 @@ public class CloudSpawner : MonoBehaviour
         
         while (true)
         {
-            foreach (GameObject otherCloud in CloudPool.Instance.pool)
+            foreach (GameObject otherCloud in CloudPool.Instance.Pool)
             {
-                float randomX = random.Next(Constants.MapBoundaryX1, Constants.MapBoundaryX2);
-                float randomZ = random.Next(Constants.MapBoundaryZ1, Constants.MapBoundaryZ2);
+                float randomX = _random.Next(Constants.MapBoundaryX1, Constants.MapBoundaryX2);
+                float randomZ = _random.Next(Constants.MapBoundaryZ1, Constants.MapBoundaryZ2);
             
                 randomSpawnPosition = new Vector3(randomX, Constants.Height, randomZ);
             
                 float distance = Vector3.Distance(randomSpawnPosition, otherCloud.transform.position);
                 
-                if (distance > 100)
+                if (distance > _distanceBetweenClouds)
                 {
                     wrongPosition = false;
-                    Debug.Log($"Distance RIGHT {distance}");
                 } 
                 else
                 {
                     wrongPosition = true;
-                    Debug.Log($"Distance WRONG {distance}");
                     break;
                 }
             }

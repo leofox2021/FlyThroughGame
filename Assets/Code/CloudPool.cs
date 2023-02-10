@@ -5,38 +5,32 @@ using UnityEngine;
 
 public class CloudPool : MonoBehaviour
 {
-    [SerializeField] private GameObject prefab;
+    [SerializeField] private GameObject _prefab;
     [SerializeField] private int _amountToPool;
 
-    private static CloudPool instance;
-    public static CloudPool Instance { get { return instance; } }
+    private static CloudPool _instance;
+    public static CloudPool Instance { get { return _instance; } }
+
+    public List<GameObject> Pool = new List<GameObject>();
     
-    public List<GameObject> pool = new List<GameObject>(){};
     
-    
-    public void Awake()
+    private void Awake()
     {
-        if (instance == null)
-            instance = this;
+        if (_instance == null)
+            _instance = this;
     }
 
 
-    public void generateClouds()
+    public void GenerateClouds()
     {
-        if (this.pool.Count == 0)
+        if (this.Pool.Count == 0)
         {
             for (int i = 0; i < _amountToPool; i++)
             {
-                GameObject newObject = Instantiate(prefab);
+                GameObject newObject = Instantiate(_prefab);
                 newObject.SetActive(false);
-                pool.Add(newObject);
-                
-                Debug.Log($"Cloud number {i} has been spawned!");
+                Pool.Add(newObject);
             } 
-        }
-        else
-        {
-            Debug.Log("Your clouds are already generated!");
         }
     }
 }

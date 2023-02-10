@@ -4,24 +4,24 @@ using UnityEngine;
 
 public class MouseDrag : MonoBehaviour
 {
-    private Vector3 offset;
+    private Vector3 _offset;
     private float _mouseCoordinateZ;
     
     
-    public void OnMouseDrag()
+    private void OnMouseDrag()
     {
-        transform.position = getMousePosition() + offset;
+        transform.position = getMousePosition() + _offset;
     }
 
 
-    public void OnMouseDown()
+    private void OnMouseDown()
     {
         _mouseCoordinateZ = Camera.main.WorldToScreenPoint(gameObject.transform.position).z;
-        offset = gameObject.transform.position - getMousePosition();
+        _offset = gameObject.transform.position - getMousePosition();
     }
 
     
-    public Vector3 getMousePosition()
+    private Vector3 getMousePosition()
     {
         Vector3 mousePosition = Input.mousePosition;
         mousePosition.z = _mouseCoordinateZ;

@@ -5,18 +5,18 @@ using UnityEngine;
 
 public class Cloud : MonoBehaviour
 {
-    [SerializeField] private GameObject cloud;
+    [SerializeField] private GameObject _cloud;
     [SerializeField] private float _movementSpeed;
 
     
-    public void FixedUpdate()
+    private void FixedUpdate()
     {
-        Vector3 currentPosition = cloud.transform.position;
+        Vector3 currentPosition = _cloud.transform.position;
         Vector3 forwardDirection = new Vector3(0, 0, -1);
         
         if (currentPosition.z < Constants.MapBoundaryZ1)
-            cloud.SetActive(false);
+            _cloud.SetActive(false);
         else 
-            cloud.transform.Translate(forwardDirection * Time.deltaTime * _movementSpeed);
+            _cloud.transform.Translate(forwardDirection * Time.deltaTime * _movementSpeed);
     }
 }

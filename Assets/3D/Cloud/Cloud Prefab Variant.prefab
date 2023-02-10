@@ -176,5 +176,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 973ed4c14b3acf24d84dbe2cc4376bea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cloud: {fileID: 7069573528123577550}
+  _cloud: {fileID: 7069573528123577550}
   _movementSpeed: 15

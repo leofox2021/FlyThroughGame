@@ -5,43 +5,43 @@ using UnityEngine.UIElements;
 
 public class UserInterface : MonoBehaviour
 {
-    [SerializeField] private PlaneMove plane;
-    [SerializeField] private WaypointSpawner waypointSpawner;
+    [SerializeField] private PlaneMove _plane;
+    [SerializeField] private WaypointSpawner _waypointSpawner;
     
-    private VisualElement root;
+    private VisualElement _root;
     
-    private Button startMovementButton;
-    private Button stopMovementButton;
-    private Button newWaypointButton;
+    private Button _startMovementButton;
+    private Button _stopMovementButton;
+    private Button _newWaypointButton;
     
-    public void OnEnable()
+    private void OnEnable()
     {
-        root = GetComponent<UIDocument>().rootVisualElement;
+        _root = GetComponent<UIDocument>().rootVisualElement;
 
-        startMovementButton = root.Q<Button>("StartFlightButton");
-        stopMovementButton = root.Q<Button>("StopFlightButton");
-        newWaypointButton = root.Q<Button>("NewWaypointButton");
+        _startMovementButton = _root.Q<Button>("StartFlightButton");
+        _stopMovementButton = _root.Q<Button>("StopFlightButton");
+        _newWaypointButton = _root.Q<Button>("NewWaypointButton");
         
-        startMovementButton.clicked += StartMovementButtonOnclicked;
-        stopMovementButton.clicked += StopMovementButtonOnclicked;
-        newWaypointButton.clicked += NewWaypointButtonOnclicked;
+        _startMovementButton.clicked += StartMovementButtonOnclicked;
+        _stopMovementButton.clicked += StopMovementButtonOnclicked;
+        _newWaypointButton.clicked += NewWaypointButtonOnclicked;
     }
     
 
     private void StartMovementButtonOnclicked()
     {
-        plane.setMovingOn();
+        _plane.SetMovingOn();
     }
     
     
     private void StopMovementButtonOnclicked()
     {
-        plane.setMovingOff();
+        _plane.SetMovingOff();
     }
     
     
     private void NewWaypointButtonOnclicked()
     {
-        waypointSpawner.generateWaypoint();
+        _waypointSpawner.GenerateWaypoint();
     }
 }

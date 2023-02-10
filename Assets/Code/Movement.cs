@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
-    [SerializeField] private Rigidbody player;
+    [SerializeField] private Rigidbody _player;
     [SerializeField] private float _movementSpeed;
     [SerializeField] private float _mouseSensitivity;
     
@@ -18,7 +18,7 @@ public class Movement : MonoBehaviour
     private float _pitch;
     
     
-    public void Update()
+    private void Update()
     {
         updateYawPitch();
         followMouse();
@@ -29,7 +29,7 @@ public class Movement : MonoBehaviour
     }
 
 
-    public void FixedUpdate()
+    private void FixedUpdate()
     {
         movePlayerAlongX();
         movePlayerAlongY();
@@ -37,31 +37,31 @@ public class Movement : MonoBehaviour
     }
     
     
-    public void movePlayer(Vector3 direction)
+    private void movePlayer(Vector3 direction)
     {
-        player.MovePosition(player.transform.position + direction * _movementSpeed * Time.deltaTime);      
+        _player.MovePosition(_player.transform.position + (direction * _movementSpeed * Time.deltaTime));      
     }
     
     
-    public void stopPlayer()
+    private void stopPlayer()
     {
         Vector3 zeroVelocity = new Vector3(0, 0, 0);
-        player.velocity = zeroVelocity;
+        _player.velocity = zeroVelocity;
     }
     
     
     private void updateYawPitch()
     {
-        _yaw += _mouseSensitivity * Input.GetAxis(mouseAxisX);
-        _pitch -= _mouseSensitivity * Input.GetAxis(mouseAxisY);    
+        _yaw += _mouseSensitivity * Input.GetAxis(MouseAxisX);
+        _pitch -= _mouseSensitivity * Input.GetAxis(MouseAxisY);    
     }
     
     
     private void defineMovementAlongX()
     {
-        if (Input.GetKey(rightKey))
+        if (Input.GetKey(RightKey))
             _movementAlongX = MovementsX.RIGHT;
-        else if (Input.GetKey(leftKey))
+        else if (Input.GetKey(LeftKey))
             _movementAlongX = MovementsX.LEFT;
         else
             _movementAlongX = MovementsX.NONE;
@@ -70,9 +70,9 @@ public class Movement : MonoBehaviour
     
     private void defineMovementAlongY()
     {
-        if (Input.GetKey(upkey))
+        if (Input.GetKey(UpKey))
             _movementAlongY = MovementsY.UP;
-        else if (Input.GetKey(downKey))
+        else if (Input.GetKey(DownKey))
             _movementAlongY = MovementsY.DOWN;
         else
             _movementAlongY = MovementsY.NONE;
@@ -81,9 +81,9 @@ public class Movement : MonoBehaviour
     
     private void defineMovementAlongZ()
     {
-        if (Input.GetKey(forwardKey))
+        if (Input.GetKey(ForwardKey))
             _movementAlongZ = MovementsZ.FORWARD;
-        else if (Input.GetKey(backwardKey))
+        else if (Input.GetKey(BackwardKey))
             _movementAlongZ = MovementsZ.BACKWARD;
         else
             _movementAlongZ = MovementsZ.NONE;
@@ -94,9 +94,9 @@ public class Movement : MonoBehaviour
     private void movePlayerAlongX()
     {
         if (_movementAlongX == MovementsX.RIGHT)
-            movePlayer(player.transform.right);
+            movePlayer(_player.transform.right);
         else if (_movementAlongX == MovementsX.LEFT)
-            movePlayer(-player.transform.right);
+            movePlayer(-_player.transform.right);
         else 
             stopPlayer();
     }
@@ -105,9 +105,9 @@ public class Movement : MonoBehaviour
     private void movePlayerAlongY()
     {
         if (_movementAlongY == MovementsY.UP)
-            movePlayer(player.transform.up);
+            movePlayer(_player.transform.up);
         else if (_movementAlongY == MovementsY.DOWN)
-            movePlayer(-player.transform.up);
+            movePlayer(-_player.transform.up);
         else 
             stopPlayer();
     }
@@ -116,9 +116,9 @@ public class Movement : MonoBehaviour
     private void movePlayerAlongZ()
     {
         if (_movementAlongZ == MovementsZ.FORWARD)
-            movePlayer(player.transform.forward);
+            movePlayer(_player.transform.forward);
         else if (_movementAlongZ == MovementsZ.BACKWARD)
-            movePlayer(-player.transform.forward);
+            movePlayer(-_player.transform.forward);
         else 
             stopPlayer();  
     }
@@ -126,6 +126,6 @@ public class Movement : MonoBehaviour
     
     private void followMouse()
     {
-        player.transform.eulerAngles = new Vector3(_pitch, _yaw, 0.0f);
+        _player.transform.eulerAngles = new Vector3(_pitch, _yaw, 0.0f);
     }
 }

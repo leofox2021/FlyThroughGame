@@ -4,53 +4,52 @@ using UnityEngine;
 
 public class PlaneMove : MonoBehaviour 
 {
-    [SerializeField] private Rigidbody airplane;
+    [SerializeField] private Rigidbody _airplane;
     [SerializeField] private float _movementSpeed;
     [SerializeField] private float _rotationStep;
     [SerializeField] private float _peakRotation;
     
-    
-    private Vector3 direction;
-    private Vector3 rotation;
+    private Vector3 _direction;
+    private Vector3 _rotation;
     
     private bool _moving;
     private bool _rotating;
 
-    public void Start() 
+    private void Start() 
     {
         _moving = false;
-        direction.Set(0, 0, 0.5f);
+        _direction.Set(0, 0, 0.5f);
     }
 
 
-    public void FixedUpdate()
+    private void FixedUpdate()
     {
-        Vector3 currentPosition = airplane.transform.position;
-        Vector3 forwardDirection = airplane.transform.forward;
+        Vector3 currentPosition = _airplane.transform.position;
+        Vector3 forwardDirection = _airplane.transform.forward;
         
         if (_moving)
-            airplane.MovePosition(currentPosition + forwardDirection * _movementSpeed * Time.deltaTime);
+            _airplane.MovePosition(currentPosition + (forwardDirection * _movementSpeed * Time.deltaTime));
         
-        if (_rotating) rotateAirplane(rotation);
+        if (_rotating) rotateAirplane(_rotation);
     }
     
     
-    public void setMovingOn()
+    public void SetMovingOn()
     {
         _moving = true;
     }
     
     
-    public void setMovingOff()
+    public void SetMovingOff()
     {
-        direction.Set(0, 0, 0);
+        _direction.Set(0, 0, 0);
         _moving = false;
     }
     
     
     private void rotateAirplane(Vector3 eulerAngles)
     {
-        airplane.transform.Rotate(rotation, Space.Self);;
+        _airplane.transform.Rotate(_direction, Space.Self);;
         _rotating = false;
     }
 }
