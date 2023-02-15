@@ -10,7 +10,7 @@ public class WaypointSpawner : MonoBehaviour
     [SerializeField] private GameObject _player;
     [SerializeField] private int _cooldownMsec;
 
-    private Vector3 offset;
+    private Vector3 _offset;
     private bool _cooldown = false;
     
     
