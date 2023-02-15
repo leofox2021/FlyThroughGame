@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 // ReSharper disable All
 
@@ -7,9 +8,6 @@ namespace Database
     
     public class Keys : MonoBehaviour 
     {
-        public static KeyCode StartKey = KeyCode.UpArrow;
-        public static KeyCode StopKey = KeyCode.DownArrow;
-        
         public static KeyCode RightKey = KeyCode.D;
         public static KeyCode LeftKey = KeyCode.A;
         
@@ -19,6 +17,10 @@ namespace Database
         public static KeyCode ForwardKey = KeyCode.W;
         public static KeyCode BackwardKey = KeyCode.S;
 
+        public static KeyCode StartMovingKey = KeyCode.M;
+        public static KeyCode StopMovingKey = KeyCode.K;
+        public static KeyCode NewWaypointKey = KeyCode.N;
+        
         public static string MouseAxisX = "Mouse X";
         public static string MouseAxisY = "Mouse Y";
     }
@@ -56,5 +58,11 @@ namespace Database
             DOWN,
             NONE
         }
+    }
+    
+    
+    public static class Lists
+    {
+        public static List<Waypoint> Waypoints = new List<Waypoint>();
     }
 }

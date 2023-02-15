@@ -1,4 +1,5 @@
-using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
 using UnityEngine;
 
 // ReSharper disable All
@@ -6,26 +7,32 @@ using UnityEngine;
 public class WaypointSpawner : MonoBehaviour
 {
     [SerializeField] private GameObject _prefab;
-    private List<GameObject> _waypointList = new List<GameObject>();
-    public List<GameObject> WaypointList
+    [SerializeField] private GameObject _player;
+    [SerializeField] private int _cooldownMsec;
+
+    private Vector3 offset;
+    private bool _cooldown = false;
+    
+    
+    public bool Cooldown
     {
         get
         {
-            return _waypointList;
-        }
-    }
-    public int WaypointCount
-    {
-        get
-        {
-            return _waypointList.Count;
+            return _cooldown;
         }
     }
 
-
-    public void GenerateWaypoint()
+    
+    public async void GenerateWaypoint()
     {
+        Vector3 position = _player.transform.position;
         GameObject newObject = Instantiate(_prefab);
-        _waypointList.Add(gameObject);
+
+        await Task.Run(() =>
+        {
+            _cooldown = true;
+            Thread.Sleep(_cooldownMsec);
+            _cooldown = false;
+        });
     }
 }
